@@ -1,0 +1,28 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+
+        //checking if lengths are equals
+        if(s.length()!=t.length())
+            return false;
+        int[] charCount=new int[26];
+
+        //adding number of occurence of each character in string s to charcount array
+        for(int i=0;i<s.length();i++){
+            charCount[s.charAt(i)-'a']++;
+        }
+        
+        //removing the characters present in string t from charcount array
+        for(int i=0;i<t.length();i++){
+            charCount[t.charAt(i)-'a']--;
+        }
+
+        //checking if any character is remaining
+        for(int i=0;i<26;i++){
+            if(charCount[i]>0){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
